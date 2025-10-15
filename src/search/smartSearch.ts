@@ -20,13 +20,10 @@ export interface SmartSearchResult {
   finalResults: string;
 }
 
-// Búsqueda inteligente: primero en caché, luego descarga si es necesario
 export async function smartSearch(
   query: string,
   suggestedKeys?: string[]
 ): Promise<SmartSearchResult> {
-  console.log(`🔍 Iniciando búsqueda inteligente para: "${query}"`);
-
   // Paso 1: Buscar en caché local
   const cacheResults = await searchInCache(query);
   const hasGoodCacheResults =
@@ -34,7 +31,6 @@ export async function smartSearch(
     !cacheResults.includes("No se encontraron resultados");
 
   if (hasGoodCacheResults) {
-    console.log("✅ Encontrados resultados útiles en caché local");
     return {
       foundInCache: true,
       cacheResults,
@@ -43,33 +39,18 @@ export async function smartSearch(
   }
 
   // Paso 2: Si no hay buenos resultados en caché, intentar descargar documentos relevantes
-  console.log(
-    "🌐 No hay suficientes resultados en caché, buscando en la web..."
-  );
-
   const downloadedDocs: string[] = [];
   const potentialKeys = suggestedKeys || generatePotentialKeys(query);
 
   // Intentar descargar documentos que podrían contener la información buscada
   for (const key of potentialKeys) {
-    try {
-      console.log(`📥 Intentando descargar: ${key}`);
-      const doc = await fetchDocByKey(key);
-      downloadedDocs.push(key);
-      console.log(`✅ Descargado: ${key} (${doc.text.length} caracteres)`);
-    } catch (error) {
-      const errorMessage =
-        error instanceof Error ? error.message : "Error desconocido";
-      console.log(
-        `❌ No se pudo descargar: ${key} - ${errorMessage.substring(0, 100)}`
-      );
-    }
+    const doc = await fetchDocByKey(key);
+    downloadedDocs.push(key);
   }
 
   // Paso 3: Buscar nuevamente en caché después de las descargas
   let finalResults = "";
   if (downloadedDocs.length > 0) {
-    console.log("🔍 Buscando nuevamente en caché después de las descargas...");
     const newCacheResults = await searchInCache(query);
     finalResults = `# Resultados después de descargar documentos\n\n## Documentos descargados:\n${downloadedDocs
       .map((key) => `- ${key}`)
