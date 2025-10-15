@@ -3,18 +3,7 @@
     "iris-mcp": {
       "type": "stdio",
       "command": "node",
-      "args": [
-        "/Users/sebastianrodriguezzapata/Desktop/iris-mcp/dist/server.js"
-      ]
-    },
-    "iris-objectscript-docs": {
-      "command": "bash",
-      "args": [
-        "/Users/sebastianrodriguezzapata/Desktop/iris-mcp/iris-mcp-wrapper.sh"
-      ],
-      "env": {
-        "NODE_ENV": "production"
-      }
+      "args": [""]
     }
   },
   "inputs": []
