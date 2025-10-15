@@ -1,0 +1,374 @@
+> Fuente oficial: https://docs.intersystems.com/irislatest/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS
+
+# ObjectScript Reference (Contents) | InterSystems IRIS Data Platform 2025.2
+
+# ObjectScript Reference
+
+Symbols and Abbreviations ObjectScript Operators ObjectScript Commands Routine and Debugging Commands ObjectScript Functions ObjectScript Special Variables Structured System Variables Macro Preprocessor Directives Rules and Guidelines for Identifiers General System Limits System Macros System Flags and Qualifiers (qspec) Regular Expressions Translation Tables Numeric Computing in InterSystems Applications
+
+- Symbols Used in ObjectScript
+- Abbreviations Used in ObjectScript
+
+- Unary Positive (+)
+- Unary Negative (-)
+- Addition (+)
+- Subtraction (-)
+- Multiplication (*)
+- Division (/)
+- Integer Division ( \ )
+- Modulo (#)
+- Exponentiation (**)
+- Less Than (<)
+- Greater Than (>)
+- Less Than or Equal To (<= or '>)
+- Greater Than or Equal To (>= or '<)
+- Not (')
+- And (& or &&)
+- Or (! or ||)
+- Not And (NAND) ('&)
+- Not Or (NOR) ('!)
+- String Concatenate (_)
+- Equals (=)
+- Not Equals ('=)
+- Contains ([)
+- Does Not Contain ('[)
+- Follows (])
+- Not Follows ('])
+- Sorts After (]])
+- Not Sorts After (']])
+- Pattern Match (?)
+- Indirection (@)
+
+- BREAK
+- CATCH
+- CLOSE
+- CONTINUE
+- DO
+- DO WHILE
+- ELSE
+- ELSEIF
+- FOR
+- GOTO
+- HALT
+- HANG
+- IF
+- JOB
+- KILL
+- LOCK
+- MERGE
+- NEW
+- OPEN
+- QUIT
+- READ
+- RETURN
+- SET
+- TCOMMIT
+- THROW
+- TROLLBACK
+- TRY
+- TSTART
+- USE
+- VIEW
+- WHILE
+- WRITE
+- XECUTE
+- ZKILL
+- ZNSPACE
+- ZSU
+- ZTRAP
+- ZWRITE
+- ZZDUMP
+- ZZWRITE
+
+- PRINT
+- ZBREAK
+- ZINSERT
+- ZLOAD
+- ZPRINT
+- ZREMOVE
+- ZSAVE
+- ZZPRINT
+
+- $ASCII
+- $BIT
+- $BITCOUNT
+- $BITFIND
+- $BITLOGIC
+- $CASE
+- $CHANGE
+- $CHAR
+- $CLASSMETHOD
+- $CLASSNAME
+- $COMPILE
+- $DATA
+- $DECIMAL
+- $DOUBLE
+- $EXTRACT
+- $FACTOR
+- $FIND
+- $FNUMBER
+- $GET
+- $INCREMENT
+- $INUMBER
+- $ISOBJECT
+- $ISVALIDDOUBLE
+- $ISVALIDNUM
+- $ISVECTOR
+- $JUSTIFY
+- $LENGTH
+- $LIST
+- $LISTBUILD
+- $LISTDATA
+- $LISTFIND
+- $LISTFROMSTRING
+- $LISTGET
+- $LISTLENGTH
+- $LISTNEXT
+- $LISTSAME
+- $LISTTOSTRING
+- $LISTUPDATE
+- $LISTVALID
+- $LOCATE
+- $MATCH
+- $METHOD
+- $NAME
+- $NCONVERT
+- $NORMALIZE
+- $NOW
+- $NUMBER
+- $ORDER
+- $PARAMETER
+- $PIECE
+- $PREFETCHOFF
+- $PREFETCHON
+- $PROPERTY
+- $QLENGTH
+- $QSUBSCRIPT
+- $QUERY
+- $RANDOM
+- $REPLACE
+- $REVERSE
+- $SCONVERT
+- $SELECT
+- $SEQUENCE
+- $SORTBEGIN
+- $SORTEND
+- $STACK
+- $TEXT
+- $TRANSLATE
+- $VECTOR
+- $VECTORDEFINED
+- $VECTOROP
+- $VIEW
+- $WASCII
+- $WCHAR
+- $WEXTRACT
+- $WFIND
+- $WISWIDE
+- $WLENGTH
+- $WREVERSE
+- $XECUTE
+- $ZABS
+- $ZARCCOS
+- $ZARCSIN
+- $ZARCTAN
+- $ZBOOLEAN
+- $ZCONVERT
+- $ZCOS
+- $ZCOT
+- $ZCRC
+- $ZCSC
+- $ZCYC
+- $ZDASCII
+- $ZDATE
+- $ZDATEH
+- $ZDATETIME
+- $ZDATETIMEH
+- $ZDCHAR
+- $ZEXP
+- $ZF
+- $ZF(-1)
+- $ZF(-2)
+- $ZF(-3)
+- $ZF(-4)
+- $ZF(-5)
+- $ZF(-6)
+- $ZF(-100)
+- $ZHEX
+- $ZISWIDE
+- $ZLASCII
+- $ZLCHAR
+- $ZLN
+- $ZLOG
+- $ZNAME
+- $ZPOSITION
+- $ZPOWER
+- $ZQASCII
+- $ZQCHAR
+- $ZSEARCH
+- $ZSEC
+- $ZSEEK
+- $ZSIN
+- $ZSQR
+- $ZSTRIP
+- $ZTAN
+- $ZTIME
+- $ZTIMEH
+- $ZVERSION(1)
+- $ZWASCII
+- $ZWCHAR
+- $ZWIDTH
+- $ZWPACK and $ZWBPACK
+- $ZWUNPACK and $ZWBUNPACK
+- $ZZENKAKU
+
+- $DEVICE
+- $ECODE
+- $ESTACK
+- $ETRAP
+- $HALT
+- $HOROLOG
+- $IO
+- $JOB
+- $KEY
+- $NAMESPACE
+- $PRINCIPAL
+- $QUIT
+- $ROLES
+- $STACK
+- $STORAGE
+- $SYSTEM
+- $TEST
+- $THIS
+- $THROWOBJ
+- $TLEVEL
+- $USERNAME
+- $X
+- $Y
+- $ZA
+- $ZB
+- $ZCHILD
+- $ZEOF
+- $ZEOS
+- $ZERROR
+- $ZHOROLOG
+- $ZIO
+- $ZJOB
+- $ZMODE
+- $ZNAME
+- $ZNSPACE
+- $ZORDER
+- $ZPARENT
+- $ZPI
+- $ZPOS
+- $ZREFERENCE
+- $ZSTORAGE
+- $ZTIMESTAMP
+- $ZTIMEZONE
+- $ZTRAP
+- $ZVERSION
+
+- ^$GLOBAL
+- ^$JOB
+- ^$LOCK
+- ^$ROUTINE
+
+- #;
+- #def1arg
+- #define
+- #dim
+- #else
+- #elseif
+- #endif
+- #execute
+- #if
+- #ifDef
+- #ifNDef
+- #import
+- #include
+- #noshow
+- #show
+- #sqlcompile audit
+- #sqlcompile mode
+- #sqlcompile path
+- #sqlcompile select
+- #undef
+- ##;
+- ##beginquote ... ##EndQuote
+- ##continue
+- ##expression
+- ##function
+- ##lit
+- ##quote
+- ##quoteExp
+- ##sql
+- ##stripq
+- ##unique
+
+- Rules for Local Variable Names
+- Local Variable Names to Avoid
+- Rules for Global Variable Names
+- Global Variable Names to Avoid
+- Rules for Routine Names and Labels
+- Reserved Routine Names for Your Use
+- Rules for Package and Class Names
+- Package, Class, and Schema Names to Avoid
+- Rules for Class Member Names
+- Member Names to Avoid
+- Custom Items in IRISSYS
+- Language Customizations
+
+- String Length Limit
+- Subscript Limits
+- Maximum Length of a Global Reference
+- Class Limits
+- Class and Routine Limits
+- Other Programming Limits
+
+- Macro Availability
+- Macro Reference
+
+- Example
+- Negation
+- Flags
+- Compiler Qualifiers
+- Export Qualifiers
+- ShowClassAndObject Qualifiers
+- UnitTest Qualifiers
+- Qualifiers for Flags
+- Help for Flags and Qualifiers
+- Controlling the Defaults
+- Order of Processing for qspec
+
+- Wildcards and Quantifiers
+- Literals and Character Ranges
+- Character Type Meta-Characters
+- Grouping Construct
+- Anchor Meta-Characters
+- Logical Operators
+- Character Representation Meta-Characters
+- Modes
+- Comments
+- Error Messages
+- See Also
+
+- Introduction
+- List of Tables
+- Output Escaping
+- Sequential Character Conversion and Character Escaping
+- Related APIs
+- Related Concepts
+- See Also
+
+- Introduction
+- Decimal Format
+- $DOUBLE Format
+- Choosing a Numeric Format
+- Conversions: Strings
+- Conversions: To $DOUBLE
+- Conversions: To Decimal
+- Conversions: Decimal to String
+- Arithmetic Operations
+- Comparison Operations
+- Boolean Operations
+- See Also

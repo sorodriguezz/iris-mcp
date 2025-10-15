@@ -1,0 +1,10 @@
+{
+  "servers": {
+    "my-mcp-server": {
+      "type": "stdio",
+      "command": "node",
+      "args": []
+    }
+  },
+  "inputs": []
+}
