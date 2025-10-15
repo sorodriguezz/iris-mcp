@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  iris-mcp:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    container_name: iris-mcp-server
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    volumes:
+      # Montar toda la carpeta data para lectura/escritura bidireccional
+      - ../data:/app/data:rw
+      # Opcional: montar logs
+      - ../logs:/app/logs:rw
+    # Para debugging, descomentar las siguientes líneas:
+    # ports:
+    #   - "3000:3000"
+    # Para MCP, no necesitamos puertos ya que usa stdio
+    # Pero podemos usar named pipes o sockets si es necesario
+    networks:
+      - mcp-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "process.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  mcp-network:
+    driver: bridge
+
+# Opcional: volúmenes nombrados para persistencia
+volumes:
+  cache-data:
+    driver: local
+  logs-data:
+    driver: local

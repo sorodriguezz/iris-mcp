@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "iris-objectscript-docs": {
+      "command": "bash",
+      "args": ["/absolite/path/iris-mcp/deploy/iris-mcp-wrapper.sh"],
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}
